@@ -1,1166 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cecil Mais - Cybersecurity Professional</title>
-    <style>
-        :root {
-            --primary: #1e3a8a;
-            --primary-light: #3451b2;
-            --secondary: #16a34a;
-            --accent: #dc2626;
-            --dark: #1e293b;
-            --darker: #0f172a;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-        
-        /* Header & Navigation */
-        header {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--light);
-            overflow: hidden;
-        }
-        
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 20px 0;
-        }
-        
-        .animate-character {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background-image: linear-gradient(45deg, var(--secondary), #06b6d4, var(--accent));
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            animation: shine 3s linear infinite;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-        
-        .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards;
-            animation-delay: 0.5s;
-        }
-        
-        .header-buttons {
-            display: flex;
-            gap: 15px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s forwards;
-            animation-delay: 0.8s;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        
-        .btn-primary {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #15803d;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        .btn-outline:hover {
-            background-color: white;
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .nav-toggle:hover {
-            transform: scale(1.1);
-        }
-        
-        .nav-toggle span {
-            position: relative;
-            width: 24px;
-            height: 2px;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        .nav-toggle span::before,
-        .nav-toggle span::after {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 2px;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        .nav-toggle span::before {
-            transform: translateY(-8px);
-        }
-        
-        .nav-toggle span::after {
-            transform: translateY(8px);
-        }
-        
-        .nav-toggle.active span {
-            background-color: transparent;
-        }
-        
-        .nav-toggle.active span::before {
-            transform: rotate(45deg);
-        }
-        
-        .nav-toggle.active span::after {
-            transform: rotate(-45deg);
-        }
-        
-        nav {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100vh;
-            background-color: var(--darker);
-            z-index: 999;
-            transition: var(--transition);
-            padding: 80px 20px 20px;
-        }
-        
-        nav.active {
-            right: 0;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        nav ul {
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-bottom: 15px;
-        }
-        
-        nav ul li a {
-            display: block;
-            color: var(--light);
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-        
-        nav ul li a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
-        }
-        
-        /* Social Icons */
-        .social-icons {
-            position: absolute;
-            bottom: 40px;
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-        
-        .social-icons a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-5px);
-        }
-        
-        /* Sections */
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-        }
-        
-        /* About Section */
-        .about-content {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            margin-top: 40px;
-        }
-        
-        .about-image {
-            flex: 1;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: rotate(-3deg);
-            transition: var(--transition);
-        }
-        
-        .about-image:hover {
-            transform: rotate(0deg);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-        
-        .highlight {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-        
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background-color: var(--gray);
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding: 20px 0;
-        }
-        
-        .timeline-content {
-            position: relative;
-            width: calc(50% - 40px);
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            background-color: var(--secondary);
-            border-radius: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.3);
-        }
-        
-        .timeline-date {
-            display: inline-block;
-            padding: 5px 15px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .timeline-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--dark);
-        }
-        
-        .timeline-company {
-            font-size: 1rem;
-            color: var(--gray);
-            margin-bottom: 15px;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            right: -10px;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            transform: rotate(45deg);
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::before {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: -10px;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            transform: rotate(45deg);
-        }
-        
-        /* Skills Section */
-        .skills-container {
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .skill-category {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .skill-category h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--primary);
-        }
-        
-        .skill-category h3 .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            font-size: 1.2rem;
-        }
-        
-        .skill-item {
-            margin-bottom: 15px;
-        }
-        
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background-color: #e2e8f0;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-        
-        /* Education Section */
-        .education-container {
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .education-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-        }
-        
-        .education-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .education-header {
-            background-color: var(--primary);
-            color: white;
-            padding: 20px;
-        }
-        
-        .education-degree {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-        
-        .education-school {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-        
-        .education-date {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 5px;
-        }
-        
-        .education-body {
-            padding: 20px;
-        }
-        
-        .education-body h4 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        /* Projects Section */
-        .projects-container {
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-        
-        .project-body {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        
-        .project-description {
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .project-tag {
-            padding: 5px 10px;
-            background-color: #e2e8f0;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: var(--dark);
-            transition: var(--transition);
-        }
-        
-        .project-tag:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        /* Certifications */
-        .certifications-container {
-            margin-top: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .cert-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .cert-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .cert-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-        
-        .cert-details {
-            flex-grow: 1;
-        }
-        
-        .cert-name {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        
-        .cert-issuer {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Contact Section */
-        .contact-container {
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .contact-info {
-            padding: 30px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            gap: 15px;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 1.3rem;
-        }
-        
-        .contact-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .contact-text p, .contact-text a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .contact-text a:hover {
-            color: var(--secondary);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--darker);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animated {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .about-image {
-                margin-bottom: 30px;
-            }
-            
-            .timeline::before {
-                left: 40px;
-            }
-            
-            .timeline-item::after {
-                left: 40px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 80px);
-                margin-left: 80px !important;
-            }
-            
-            .timeline-item .timeline-content::before {
-                left: -10px !important;
-                right: auto !important;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                padding-top: 50px;
-                text-align: center;
-            }
-            
-            .animate-character {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .header-buttons {
-                justify-content: center;
-            }
-            
-            .social-icons {
-                position: relative;
-                bottom: auto;
-                margin-top: 40px;
-                justify-content: center;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .animate-character {
-                font-size: 2rem;
-            }
-            
-            .header-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cecil Mais - IT Security Specialist</title>
+  <style>
+    :root {
+      --primary-color: #1e3a8a;
+      --secondary-color: #3b82f6;
+      --accent-color: #0ea5e9;
+      --text-color: #333;
+      --light-bg: #f5f5f5;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--white);
+      padding: 2rem 0;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .profile-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border: 3px solid var(--white);
+      box-shadow: var(--shadow);
+    }
+    
+    .profile-image svg {
+      width: 80%;
+      height: 80%;
+      fill: var(--primary-color);
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+    }
+    
+    .contact-item i {
+      margin-right: 0.5rem;
+    }
+    
+    main {
+      padding: 2rem 0;
+    }
+    
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+      background: var(--white);
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin: 0.5rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .tab-btn:hover {
+      background-color: var(--secondary-color);
+      color: var(--white);
+    }
+    
+    .tab-btn.active {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .section {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    .job {
+      margin-bottom: 2rem;
+    }
+    
+    .job:last-child {
+      margin-bottom: 0;
+    }
+    
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .job-title {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .job-company {
+      font-weight: 500;
+    }
+    
+    .job-date {
+      color: #666;
+      font-style: italic;
+    }
+    
+    .job-location {
+      color: #666;
+    }
+    
+    ul {
+      list-style-position: inside;
+      margin-left: 1rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .skill-category {
+      flex: 1;
+      min-width: 250px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .skill-category h4 {
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+    
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-tag {
+      background-color: var(--light-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .skill-tag:hover {
+      background-color: var(--accent-color);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    
+    .certification {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      background-color: var(--light-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .certification:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    
+    .certification-icon {
+      margin-right: 1rem;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+    
+    .project {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      background-color: var(--light-bg);
+      transition: all 0.3s ease;
+    }
+    
+    .project:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    
+    .project h4 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .education-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .education-details {
+      flex: 3;
+      min-width: 300px;
+    }
+    
+    .education-date {
+      flex: 1;
+      min-width: 150px;
+      text-align: right;
+      color: #666;
+    }
+    
+    .education-degree {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .education-school {
+      font-weight: 500;
+    }
+    
+    footer {
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+    
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .footer-link {
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-link i {
+      margin-right: 0.5rem;
+    }
+    
+    .footer-link:hover {
+      color: var(--accent-color);
+    }
+    
+    .to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--primary-color);
+      color: var(--white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+    
+    .to-top.active {
+      opacity: 1;
+    }
+    
+    .to-top:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .close-btn {
+      float: right;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+    
+    .close-btn:hover {
+      color: var(--primary-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 0;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .job-header {
+        flex-direction: column;
+      }
+      
+      .education-date {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="nav-toggle">
-        <span></span>
+  <header>
+    <div class="container">
+      <div class="profile-container">
+        <div class="profile-image">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+          </svg>
+        </div>
+        <h1>Cecil Mais</h1>
+        <h2>IT Security Specialist</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i>📧</i> cecil13mais@gmail.com
+          </div>
+          <div class="contact-item">
+            <i>📱</i> (954)-478-0867
+          </div>
+          <div class="contact-item">
+            <i>📍</i> Miami, FL
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i>🔗</i> www.linkedin.com/in/cecilmais
+          </div>
+          <div class="contact-item">
+            <i>💻</i> cecil13mais.github.io
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    
-    <!-- Header Section -->
-    <header id="home">
-        <div class="particles"></div>
-        <div class="container">
-            <div class="header-content">
-                <h1 class="animate-character">Cecil Mais</h1>
-                <h2 class="subtitle">IT Security Specialist</h2>
-                <div class="header-buttons">
-                    <a href="https://www.linkedin.com/in/cecil-mais-74163b116" class="btn btn-primary">Get In Touch</a>
-                    <a href="#about" class="btn btn-outline">About Me</a>
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/cecil-mais-74163b116" target="_blank" title="LinkedIn">in</a>
-                    <a href="mailto:cecil13mais@gmail.com" title="Email">✉</a>
-                    <a href="tel:9544780867" title="Phone">📱</a>
-                </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="skills">Skills & Certifications</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="contact">Contact Me</button>
+      </div>
+
+      <div id="experience" class="tab-content active">
+        <div class="section">
+          <h3>Work Experience</h3>
+          
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <span class="job-title">IT Security Specialist</span> at 
+                <span class="job-company">Mi-tech One</span>
+              </div>
+              <div>
+                <span class="job-date">Jan 2024 - current</span> | 
+                <span class="job-location">Fort Lauderdale, FL</span>
+              </div>
             </div>
-        </div>
-    </header>
-    
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="/api/placeholder/400/500" alt="Cecil Mais">
-                </div>
-                <div class="about-text">
-                    <p>Cybersecurity-focused <span class="highlight">IT Specialist</span> with hands-on experience in threat detection, incident response, and system hardening across cloud and on-premise environments. Skilled in penetration testing, vulnerability assessment, and endpoint security.</p>
-                    <p>Certified in <span class="highlight">Security+</span> and <span class="highlight">Azure Security (AZ-500)</span>, with a strong foundation in networking and scripting. I'm passionate about protecting digital assets and staying ahead of evolving security threats.</p>
-                    <p>Currently pursuing a Bachelor's degree in Information Technology with a Cyber Track at Florida International University, expanding my knowledge in areas such as malware analysis, algorithms, and incident response.</p>
-                    <a href="#contact" class="btn btn-primary">Let's Connect</a>
-                </div>
+            <ul>
+              <li>Managed security incidents and implemented endpoint protection measures, reducing vulnerabilities.</li>
+              <li>Implemented Okta MFA for user authentication, and applied security patches aligned with NIST/CIS standards.</li>
+              <li>Optimized network devices and secured 200+ Microsoft Azure resources, enhancing overall system security.</li>
+              <li>Developed, managed, and deployed Group Policy Objects (GPOs) to enhance endpoint security and enforce IT policies.</li>
+            </ul>
+          </div>
+          
+          <div class="job">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Level 1 Help Desk Representative</span> at 
+                <span class="job-company">Buchanan Technologies</span>
+              </div>
+              <div>
+                <span class="job-date">Jan 2021 - Dec 2024</span> | 
+                <span class="job-location">Remote</span>
+              </div>
             </div>
+            <ul>
+              <li>Managed 200+ user accounts via Active Directory and enhanced account security.</li>
+              <li>Resolved over 100 Tier 1 networking issues monthly and efficiently escalated complex tickets to Tier 2 and 3 teams.</li>
+              <li>Delivered technical support to over 150 users for Office 365, VPN access, and printer setups, enhancing remote productivity.</li>
+              <li>Streamlined onboarding for over 50 employees by establishing user accounts, mailboxes, and permissions efficiently.</li>
+            </ul>
+          </div>
         </div>
-    </section>
-    
-    <!-- Experience Section -->
-    <section id="experience" style="background-color: #f8fafc;">
-        <div class="container">
-            <h2 class="section-title">Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">January 2024 - Present</span>
-                        <h3 class="timeline-title">IT Security Specialist</h3>
-                        <p class="timeline-company">Mi-tech One | Fort Lauderdale, FL</p>
-                        <ul>
-                            <li>Successfully managed security incidents and implemented endpoint protection measures, leading to a 30% reduction in vulnerabilities and improved system integrity.</li>
-                            <li>Monitored network activity to detect and respond to security incidents, effectively mitigating 95% of identified threats and enhancing overall network security.</li>
-                            <li>Resolved remote access challenges for 100+ users using the Kaseya agent, boosting endpoint security and minimizing downtime.</li>
-                            <li>Executed comprehensive Internal vulnerability assessments, uncovering and mitigating a number of vulnerabilities, while applying security patches that led to a reduction in security incidents.</li>
-                            <li>Orchestrated and optimized the management of network components like switches, firewalls, VoIP, and NAS, resulting in enhanced network security and improved operational efficiency.</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <span class="timeline-date">January 2021 - December 2024</span>
-                        <h3 class="timeline-title">Level 1 Help Desk Representative</h3>
-                        <p class="timeline-company">Buchanan Technologies | Fort Lauderdale, FL (Remote)</p>
-                        <ul>
-                            <li>Oversaw an average of 20 Help Desk calls daily, delivering swift support for password resets and printer configurations while enhancing user satisfaction by successfully resolving 95% of issues on the first call.</li>
-                            <li>Collaborated with Level 2 and 3 support to streamline ticket escalation.</li>
-                            <li>Orchestrated the management of 200+ user accounts through Active Directory, enhancing security and user satisfaction by implementing efficient account setups and innovative GPO strategies.</li>
-                        </ul>
-                    </div>
-                </div>
+      </div>
+
+      <div id="skills" class="tab-content">
+        <div class="section">
+          <h3>Skills</h3>
+          <div class="skills-container">
+            <div class="skill-category">
+              <h4>Cybersecurity</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Penetration Testing</span>
+                <span class="skill-tag">Kali Linux</span>
+                <span class="skill-tag">Metasploit</span>
+                <span class="skill-tag">Vulnerability Scanning</span>
+                <span class="skill-tag">Nessus</span>
+                <span class="skill-tag">Burp Suite</span>
+                <span class="skill-tag">SIEM (Splunk)</span>
+                <span class="skill-tag">IDS/IPS</span>
+                <span class="skill-tag">Incident Response</span>
+              </div>
             </div>
+            
+            <div class="skill-category">
+              <h4>Networking</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Cisco Routers/Switches</span>
+                <span class="skill-tag">Wireshark</span>
+                <span class="skill-tag">VoIP</span>
+                <span class="skill-tag">Firewall Configuration</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4>Cloud & Infrastructure</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Microsoft Azure Security</span>
+                <span class="skill-tag">Virtualization (VMware)</span>
+                <span class="skill-tag">Windows/Linux Server Hardening</span>
+                <span class="skill-tag">Google Cloud Platform (GCP)</span>
+              </div>
+            </div>
+            
+            <div class="skill-category">
+              <h4>Programming</h4>
+              <div class="skills-list">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Bash</span>
+                <span class="skill-tag">PowerShell</span>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+        
+        <div class="section">
+          <h3>Certifications</h3>
+          <div class="certification">
+            <div class="certification-icon">🏆</div>
+            <div>
+              <strong>CompTIA Security+</strong>
+            </div>
+          </div>
+          <div class="certification">
+            <div class="certification-icon">🏆</div>
+            <div>
+              <strong>CompTIA CySA+</strong> (In progress)
+            </div>
+          </div>
+          <div class="certification">
+            <div class="certification-icon">🏆</div>
+            <div>
+              <strong>Microsoft Certified: Azure Security Engineer Associate (AZ-500)</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="projects" class="tab-content">
+        <div class="section">
+          <h3>Projects</h3>
+          
+          <div class="project">
+            <h4>Cyber Defense Project (Blue Team Operations)</h4>
+            <ul>
+              <li>Deployed Splunk SIEM and built incident response playbooks</li>
+              <li>Hardened Windows/Linux servers</li>
+            </ul>
+          </div>
+          
+          <div class="project">
+            <h4>GCP SQL Server Deployment on CentOS</h4>
+            <ul>
+              <li>Deployed SQL Server on CentOS VMs in GCP Compute Engine</li>
+              <li>Configured backups, hardening, monitoring with GCP Operations Suite</li>
+            </ul>
+          </div>
+          
+          <div class="project">
+            <h4>GCP Static Website Hosting with Storage Bucket</h4>
+            <ul>
+              <li>Created and configured a GCP Storage Bucket to host a static website</li>
+              <li>Set up permissions, bucket policies, and public access controls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="education" class="tab-content">
+        <div class="section">
+          <h3>Education</h3>
+          
+          <div class="education-item">
+            <div class="education-details">
+              <div class="education-degree">Bachelor's Degree in Information Technology - Cyber Track</div>
+              <div class="education-school">Florida International University (FIU)</div>
+              <div class="education-location">Miami, FL</div>
+            </div>
+            <div class="education-date">Aug 2024 - Dec 2025</div>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-details">
+              <div class="education-degree">Associate of Science in Information Technology</div>
+              <div class="education-school">Broward College / FIU</div>
+              <div class="education-location">Davie, FL</div>
+            </div>
+            <div class="education-date">Aug 2023 - May 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="contact" class="tab-content">
+        <div class="section">
+          <h3>Contact Me</h3>
+          <p>Feel free to reach out to me through any of the following channels:</p>
+          <br>
+          <div class="contact-info" style="justify-content: flex-start;">
+            <div class="contact-item">
+              <i>📧</i> cecil13mais@gmail.com
+            </div>
+            <div class="contact-item">
+              <i>📱</i> (954)-478-0867
+            </div>
+            <div class="contact-item">
+              <i>📍</i> Miami, FL
+            </div>
+          </div>
+          <br>
+          <div class="contact-info" style="justify-content: flex-start;">
+            <div class="contact-item">
+              <i>🔗</i> www.linkedin.com/in/cecilmais
+            </div>
+            <div class="contact-item">
+              <i>💻</i> cecil13mais.github.io
+            </div>
+          </div>
+          <br>
+          <div class="project">
+            <h4>Looking forward to connecting!</h4>
+            <p>I'm always interested in discussing cybersecurity trends, new technologies, and potential opportunities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>Cecil Mais</h3>
+        <p>IT Security Specialist based in Miami, FL</p>
+        <div class="footer-links">
+          <a href="#" class="footer-link" onclick="openTab(event, 'experience')">
+            <i>💼</i> Experience
+          </a>
+          <a href="#" class="footer-link" onclick="openTab(event, 'skills')">
+            <i>🛠️</i> Skills
+          </a>
+          <a href="#" class="footer-link" onclick="openTab(event, 'projects')">
+            <i>🔍</i> Projects
+          </a>
+          <a href="#" class="footer-link" onclick="openTab(event, 'education')">
+            <i>🎓</i> Education
+          </a>
+          <a href="#" class="footer-link" onclick="openTab(event, 'contact')">
+            <i>📱</i> Contact
+          </a>
+        </div>
+        <p>&copy; 2025 Cecil Mais. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="to-top" id="toTop">↑</a>
+
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
     
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><span class="icon">🔒</span> Cybersecurity</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Penetration Testing</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Vulnerability Scanning</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SIEM (Splunk)</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Incident Response</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><span class="icon">🌐</span> Networking & Protocols</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Cisco Routers/Switches</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90"></div>
-                        </div>
-
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>OSI & TCP/IP Models</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Active Directory Handening </span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Network Services (DNS, DHCP)</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-</div>
-
-<div class="skill-category">
-    <h3><span class="icon">🔒</span> Network Security</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Firewalls Log Analysis</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>VPNs Creation And Management (IPSec, SSL, L2TP)</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>VLANs & Network Segmentation</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>IDS/IPS Solutions</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Network Access Control (NAC)</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="75"></div>
-        </div>
-    </div>
-</div>
-
-<div class="skill-category">
-    <h3><span class="icon">🔍</span> Traffic Analysis & Monitoring</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Wireshark Packet Analysis</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="95"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>tcpdump Command-line Analysis</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Nmap Scanning & Reconnaissance</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>NinjaOne Network Monitoring</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>IDS/IPS Rule Writing & Tuning</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="75"></div>
-        </div>
-    </div>
-</div>
-
-<div class="skill-category">
-    <h3><span class="icon">🔑</span> Authentication & Access Management</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>RADIUS</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>802.1X Authentication</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>AAA Principles Implementation</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-</div>
-
-<div class="skill-category">
-    <h3><span class="icon">🏗️</span> Infrastructure & Network Architecture</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Cisco Meraki Configuration And Mangment</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="90"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="75"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>DMZ & Network Segmentation</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="85"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Load Balancers & Proxies</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-        </div>
-    </div>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Secure Gateway Implementation</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" data-width="80"></div>
-        </div>
-    </div>
-</div>
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Add active class to clicked button and corresponding content
+        btn.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Function to handle tab opening from footer links
+    function openTab(event, tabId) {
+      event.preventDefault();
+      
+      // Remove active class from all buttons and contents
+      tabBtns.forEach(btn => btn.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to corresponding button and content
+      document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      
+      // Scroll to tabs section
+      window.scrollTo({
+        top: document.querySelector('.tabs').offsetTop - 20,
+        behavior: 'smooth'
+      });
+    }
+    
+    // Back to top button
+    const toTopBtn = document.getElementById('toTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        toTopBtn.classList.add('active');
+      } else {
+        toTopBtn.classList.remove('active');
+      }
+    });
+    
+    toTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Project modal functionality
+    const modal = document.getElementById('projectModal');
+    const closeModal = document.getElementById('closeModal');
+    const projects = document.querySelectorAll('.project');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    
+    projects.forEach(project => {
+      project.addEventListener('click', () => {
+        modalTitle.textContent = project.querySelector('h4').textContent;
+        modalContent.innerHTML = project.innerHTML;
+        modalContent.querySelector('h4').remove(); // Remove duplicate title
+        modal.style.display = 'flex';
+      });
+    });
+    
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    
+    // Skill tag animation
+    const skillTags = document.querySelectorAll('.skill-tag');
+    
+    skillTags.forEach(tag => {
+      tag.addEventListener('mouseover', () => {
+        tag.style.transform = 'translateY(-3px)';
+      });
+      
+      tag.addEventListener('mouseout', () => {
+        tag.style.transform = 'translateY(0)';
+      });
+    });
+  </script>
+</body>
+</html>
