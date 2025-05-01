@@ -592,35 +592,91 @@
         </div>
       </div>
 
-      <div id="projects" class="tab-content">
-        <div class="section">
-          <h3>Projects</h3>
-          
-          <div class="project">
-            <h4>Cyber Defense Project (Blue Team Operations)</h4>
-            <ul>
-              <li>Deployed Splunk SIEM and built incident response playbooks</li>
-              <li>Hardened Windows/Linux servers</li>
-            </ul>
-          </div>
-          
-          <div class="project">
-            <h4>GCP SQL Server Deployment on CentOS</h4>
-            <ul>
-              <li>Deployed SQL Server on CentOS VMs in GCP Compute Engine</li>
-              <li>Configured backups, hardening, monitoring with GCP Operations Suite</li>
-            </ul>
-          </div>
-          
-          <div class="project">
-            <h4>GCP Static Website Hosting with Storage Bucket</h4>
-            <ul>
-              <li>Created and configured a GCP Storage Bucket to host a static website</li>
-              <li>Set up permissions, bucket policies, and public access controls</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      
+<div id="projects" class="tab-content">
+  <div class="section">
+    <h3>Projects</h3>
+
+    <div class="project">
+      <h4>Cyber Defense Project (Blue Team Operations)</h4>
+<ul>
+        <li>Deployed Splunk SIEM and built incident response playbooks</li>
+        <li>Hardened Windows/Linux servers</li>
+      <li>Performed forensic analysis of compromised machines using volatility and Sysinternals Suite.</li><li>Created and tested SIEM use cases mapped to the MITRE ATT&CK framework.</li><li>Led the development of incident escalation runbooks for malware outbreaks, account compromise, and insider threats.</li><li>Coordinated with red team on purple team exercises to validate defenses and fine-tune alert rules.</li><li>Completed practical blue team scenarios on TryHackMe (Blue Primer, SOC Level 1) and Hack The Box Academy.</li><li>Used simulated attacks to improve detection logic, analyze PCAP files, and extract indicators of compromise.</li></ul>
+    </div>
+
+    <div class="project">
+      <h4>GCP SQL Server Deployment on CentOS</h4>
+<ul><li>Deployed SQL Server on CentOS VMs in GCP Compute Engine</li><li>Configured backups, hardening, and GCP Operations Suite monitoring</li></ul><li>Installed Apache, PHP, MySQL client, and PHP MySQL adapter using dnf and epel-release:</li><ul></ul><li>Connected to Google Cloud MySQL instance and created a database with audit logging:</li><ul></ul><li>Configured backups, hardening, and GCP monitoring integration with Operations Suite.</li></ul>
+    </div>
+
+    <div class="project">
+      <h4>GCP Static Website Hosting with Storage Bucket</h4>
+<ul><li>Configured a Google Cloud Storage bucket with a unique domain name (USERNAME.ddns.net) using NoIP for DNS and TXT validation.</li><li>Validated domain ownership via Google Search Console and added a CNAME record to point to the public GCP storage endpoint.</li><li>Uploaded HTML static files and configured public access through bucket permissions and gsutil web settings.</li><li>Used dynamic data generation from SQL to PHP to create and organize static pages for deployment.</li></ul>
+    </div>
+
+    <div class="project">
+      <h4>SIEM & Endpoint Detection Project (SentinelOne, IDS/IPS)</h4>
+<ul><li>Integrated SentinelOne EDR with Splunk SIEM to correlate logs from Windows/Linux endpoints and network traffic sources.</li><li>Deployed and configured IDS/IPS, including Suricata (NIDS) and Windows Defender (HIPS), to monitor malicious behavior across the network.</li><li>Developed dashboards and alerts for brute-force attacks, lateral movement, privilege escalation, and endpoint malware detections.</li>
+      <li>Integrated Automox for patch management and endpoint hardening automation.</li><li>Used Zscaler for secure web gateway and DNS-layer protection across devices.</li><li>Collaborated with Arctic Wolf SOC for alert triage and escalation procedures.</li></ul>
+    </div>
+
+    <div class="project">
+      <h4>Active Directory Lab Environment</h4>
+      <ul>
+        <li>Set up an internal AD environment with Windows Server 2019 using VirtualBox.</li>
+        <li>Configured OU structure, user/group policies, and implemented password policy via GPO.</li>
+        <li>Simulated attacks using tools like BloodHound and mitigated vulnerabilities.</li>
+      </ul>
+    </div>
+
+    
+
+    <div class="project">
+      <h4>Firewall Rule Implementation with Cisco Meraki and Unifi</h4>
+      <ul>
+        <li>Configured Cisco Meraki and Unifi firewalls with VLAN segmentation and secure remote access rules.</li>
+        <li>Created inbound and outbound firewall rules for specific services (HTTP/S, SSH, DNS).</li>
+        <li>Monitored and logged traffic to ensure rule enforcement and network isolation.</li>
+      </ul>
+    </div>
+
+    
+
+  
+<div class="project">
+  <h4>Windows Server Deployment and Group Policy Management</h4>
+  <ul>
+    <li>Deployed Windows Server 2019 in a lab environment and configured roles including AD DS, DNS, and DHCP.</li>
+    <li>Created and managed user accounts, security groups, and OU structures via Active Directory.</li>
+    <li>Implemented Group Policies to enforce password complexity, restrict software, and configure desktop environments.</li>
+  </ul>
+</div>
+
+
+
+<div class="project">
+  <h4>Office 365 Administration and Exchange Online</h4>
+  <ul>
+    <li>Managed mail flow rules, retention policies, and shared mailboxes within Microsoft Exchange Online.</li>
+    <li>Used PowerShell to automate license assignments, user provisioning, and reporting across the tenant.</li>
+    <li>Configured MFA enforcement, mobile device policies, and alert policies via Microsoft 365 Defender.</li>
+  </ul>
+</div>
+
+
+<div class="project">
+  <h4>Email Security Implementation with Barracuda</h4>
+  <ul>
+    <li>Configured Barracuda Email Security Gateway to filter spam, phishing attempts, and malware-laden attachments.</li>
+    <li>Integrated Barracuda with Microsoft 365 for enhanced mail flow control and outbound filtering.</li>
+    <li>Developed quarantine policies, custom block/allow lists, and incident alerts for suspicious email behavior.</li>
+  </ul>
+</div>
+
+</div>
+</div>
+
 
       <div id="education" class="tab-content">
         <div class="section">
@@ -816,3 +872,4 @@
   </script>
 </body>
 </html>
+
