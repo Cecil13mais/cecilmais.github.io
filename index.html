@@ -1,872 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cecil Mais - IT Security Specialist</title>
-  <style>
-    :root {
-      --primary-color: #1e3a8a;
-      --secondary-color: #3b82f6;
-      --accent-color: #0ea5e9;
-      --text-color: #333;
-      --light-bg: #f5f5f5;
-      --white: #ffffff;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      color: var(--text-color);
-      background-color: var(--light-bg);
-      line-height: 1.6;
-    }
-    
-    header {
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-      color: var(--white);
-      padding: 2rem 0;
-      text-align: center;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    
-    .profile-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-    
-    .profile-image {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background-color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      overflow: hidden;
-      border: 3px solid var(--white);
-      box-shadow: var(--shadow);
-    }
-    
-    .profile-image svg {
-      width: 80%;
-      height: 80%;
-      fill: var(--primary-color);
-    }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-    
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-    }
-    
-    .contact-item i {
-      margin-right: 0.5rem;
-    }
-    
-    main {
-      padding: 2rem 0;
-    }
-    
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .tab-btn {
-      background: var(--white);
-      border: none;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-color);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 8px;
-      margin: 0.5rem;
-      box-shadow: var(--shadow);
-    }
-    
-    .tab-btn:hover {
-      background-color: var(--secondary-color);
-      color: var(--white);
-    }
-    
-    .tab-btn.active {
-      background-color: var(--primary-color);
-      color: var(--white);
-    }
-    
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-    
-    .tab-content.active {
-      display: block;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .section {
-      background-color: var(--white);
-      border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shadow);
-    }
-    
-    .section h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 0.5rem;
-      display: inline-block;
-    }
-    
-    .job {
-      margin-bottom: 2rem;
-    }
-    
-    .job:last-child {
-      margin-bottom: 0;
-    }
-    
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .job-title {
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-    
-    .job-company {
-      font-weight: 500;
-    }
-    
-    .job-date {
-      color: #666;
-      font-style: italic;
-    }
-    
-    .job-location {
-      color: #666;
-    }
-    
-    ul {
-      list-style-position: inside;
-      margin-left: 1rem;
-    }
-    
-    li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    
-    .skill-category {
-      flex: 1;
-      min-width: 250px;
-      margin-bottom: 1.5rem;
-    }
-    
-    .skill-category h4 {
-      margin-bottom: 1rem;
-      color: var(--secondary-color);
-    }
-    
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background-color: var(--light-bg);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      display: inline-block;
-      transition: all 0.3s ease;
-    }
-    
-    .skill-tag:hover {
-      background-color: var(--accent-color);
-      color: var(--white);
-      transform: translateY(-3px);
-    }
-    
-    .certification {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      background-color: var(--light-bg);
-      padding: 1rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-    }
-    
-    .certification:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-    
-    .certification-icon {
-      margin-right: 1rem;
-      color: var(--primary-color);
-      font-size: 1.5rem;
-    }
-    
-    .project {
-      margin-bottom: 2rem;
-      padding: 1.5rem;
-      border-radius: 8px;
-      background-color: var(--light-bg);
-      transition: all 0.3s ease;
-    }
-    
-    .project:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-    
-    .project h4 {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-    }
-    
-    .education-item {
-      display: flex;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .education-details {
-      flex: 3;
-      min-width: 300px;
-    }
-    
-    .education-date {
-      flex: 1;
-      min-width: 150px;
-      text-align: right;
-      color: #666;
-    }
-    
-    .education-degree {
-      font-weight: 600;
-      color: var(--primary-color);
-    }
-    
-    .education-school {
-      font-weight: 500;
-    }
-    
-    footer {
-      background-color: var(--primary-color);
-      color: var(--white);
-      text-align: center;
-      padding: 2rem 0;
-      margin-top: 2rem;
-    }
-    
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin: 1rem 0;
-      flex-wrap: wrap;
-    }
-    
-    .footer-link {
-      color: var(--white);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-    }
-    
-    .footer-link i {
-      margin-right: 0.5rem;
-    }
-    
-    .footer-link:hover {
-      color: var(--accent-color);
-    }
-    
-    .to-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background-color: var(--primary-color);
-      color: var(--white);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow);
-    }
-    
-    .to-top.active {
-      opacity: 1;
-    }
-    
-    .to-top:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-3px);
-    }
-    
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .modal-content {
-      background-color: var(--white);
-      padding: 2rem;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    
-    .close-btn {
-      float: right;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #666;
-    }
-    
-    .close-btn:hover {
-      color: var(--primary-color);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      header {
-        padding: 1rem 0;
-      }
-      
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .job-header {
-        flex-direction: column;
-      }
-      
-      .education-date {
-        text-align: left;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Configuration YAML Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .usage-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .usage-section h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .warning p {
+            color: #664d03;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
     <div class="container">
-      <div class="profile-container">
-        <div class="profile-image">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-          </svg>
+        <div class="header">
+            <h1>🔐 SSH Configuration YAML</h1>
+            <p>Streamline your SSH connections with structured configuration</p>
         </div>
-        <h1>Cecil Mais</h1>
-        <h2>IT Specialist</h2>
-        <div class="contact-info">
-         <div class="contact-item">
-  <i>📧</i> <a href="mailto:cecil13mais@gmail.com" style="color:inherit; text-decoration:underline;">Email Me</a>
-</div>
-          <div class="contact-item">
-            <i>📱</i> (954)-478-0867
-          </div>
-          <div class="contact-item">
-            <i>📍</i> Miami, FL
-          </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>What is SSH Configuration YAML?</h2>
+                <p>This comprehensive YAML configuration file provides a structured approach to managing SSH connections, authentication methods, and advanced settings. Perfect for automation tools like Ansible, Docker Compose, Kubernetes, or any application that needs standardized SSH configuration.</p>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3><span class="icon">🔑</span>Multiple Authentication</h3>
+                    <p>Support for password, key-based, and SSH agent authentication methods with flexible configuration options.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="icon">🌐</span>Multi-Host Management</h3>
+                    <p>Organize connections for production, staging, and development environments with environment-specific settings.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="icon">🚇</span>SSH Tunneling</h3>
+                    <p>Configure local port forwarding and SSH tunnels for secure access to internal services and databases.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="icon">⚙️</span>Advanced Options</h3>
+                    <p>Fine-tune connection settings including timeouts, keep-alive, compression, and security options.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="icon">🤖</span>Ansible Ready</h3>
+                    <p>Pre-configured variables and settings optimized for Ansible playbooks and automation workflows.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="icon">🔧</span>Key Generation</h3>
+                    <p>Specifications for SSH key generation including key type, bit length, and security parameters.</p>
+                </div>
+            </div>
+
+            <div class="usage-section">
+                <h2>How to Use This Configuration</h2>
+                <p><strong>1. Customize the Configuration:</strong></p>
+                <div class="code-block">
+# Replace placeholder values with your actual server details
+host: "your-server.com"
+username: "your_username"
+private_key_path: "~/.ssh/your_key"
+                </div>
+
+                <p><strong>2. Use with Ansible:</strong></p>
+                <div class="code-block">
+# Load the configuration in your playbook
+- hosts: all
+  vars_files:
+    - ssh_config.yml
+  tasks:
+    - name: Connect using SSH config
+      ping:
+                </div>
+
+                <p><strong>3. Use with Docker Compose:</strong></p>
+                <div class="code-block">
+# Reference in your docker-compose.yml
+services:
+  app:
+    environment:
+      - SSH_HOST=${ssh_config.host}
+      - SSH_USER=${ssh_config.username}
+                </div>
+            </div>
+
+            <div class="warning">
+                <h4>⚠️ Security Notice</h4>
+                <p>Remember to replace all placeholder values with your actual credentials. Never commit passwords or private keys to version control. Use environment variables or secure secret management for sensitive data.</p>
+            </div>
+
+            <div class="usage-section">
+                <h2>Configuration Sections</h2>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <strong>🔧 Basic SSH Settings:</strong> Host, port, username, and authentication methods
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <strong>🌍 Multi-Host Configuration:</strong> Separate settings for different environments
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <strong>🚇 SSH Tunneling:</strong> Local port forwarding for secure internal access
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <strong>🔑 Key Management:</strong> SSH key generation and security parameters
+                    </li>
+                    <li style="margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <strong>🤖 Ansible Integration:</strong> Ready-to-use variables for automation
+                    </li>
+                </ul>
+            </div>
+
+            <div class="download-section">
+                <h2 style="margin-bottom: 20px; color: #2d3748;">Ready to Get Started?</h2>
+                <p style="margin-bottom: 30px; color: #666; font-size: 1.1rem;">Use the SSH configuration YAML file and customize it for your infrastructure needs.</p>
+            </div>
         </div>
-       <div class="contact-item">
-  <i>🔗</i> <a href="https://www.linkedin.com/in/cecilmais" target="_blank" style="color:inherit; text-decoration:underline;">linkedin</a>
-</div>
-        </div>
-      </div>
     </div>
-  </header>
 
-  <main>
-    <div class="container">
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="experience">Experience</button>
-        <button class="tab-btn" data-tab="skills">Skills & Certifications</button>
-        <button class="tab-btn" data-tab="projects">Projects</button>
-        <button class="tab-btn" data-tab="education">Education</button>
-        <button class="tab-btn" data-tab="contact">Contact Me</button>
-      </div>
+    <script>
 
-      <div id="experience" class="tab-content active">
-        <div class="section">
-          <h3>Work Experience</h3>
-          
-          <div class="job">
-            <div class="job-header">
-              <div>
-                <span class="job-title">IT  Specialist</span> at 
-                <span class="job-company">Mi-tech One</span>
-              </div>
-              <div>
-                <span class="job-date">Jan 2024 - current</span> | 
-                <span class="job-location">Fort Lauderdale, FL</span>
-              </div>
-            </div>
-            <ul>
-              <li>Managed security incidents and implemented endpoint protection measures, reducing vulnerabilities.</li>
-              <li>Implemented Okta MFA for user authentication, and applied security patches aligned with NIST/CIS standards.</li>
-              <li>Optimized network devices and secured 200+ Microsoft Azure resources, enhancing overall system security.</li>
-              <li>Developed, managed, and deployed Group Policy Objects (GPOs) to enhance endpoint security and enforce IT policies.</li>
-            </ul>
-          </div>
-          
-          <div class="job">
-            <div class="job-header">
-              <div>
-                <span class="job-title">Level 1 Help Desk Representative</span> at 
-                <span class="job-company">Buchanan Technologies</span>
-              </div>
-              <div>
-                <span class="job-date">Jan 2021 - Dec 2024</span> | 
-                <span class="job-location">Remote</span>
-              </div>
-            </div>
-            <ul>
-              <li>Managed 200+ user accounts via Active Directory and enhanced account security.</li>
-              <li>Resolved over 100 Tier 1 networking issues monthly and efficiently escalated complex tickets to Tier 2 and 3 teams.</li>
-              <li>Delivered technical support to over 150 users for Office 365, VPN access, and printer setups, enhancing remote productivity.</li>
-              <li>Streamlined onboarding for over 50 employees by establishing user accounts, mailboxes, and permissions efficiently.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <div id="skills" class="tab-content">
-        <div class="section">
-          <h3>Active Certifications</h3>
-          <div class="certification">
-            <div class="certification-icon">🏆</div>
-            <div>
-              <strong>CompTIA Security+</strong>
-            </div>
-          </div>
-          <div class="certification">
-            <div class="certification-icon">🏆</div>
-            <div>
-              <strong>CompTIA CySA+</strong> (In progress)
-            </div>
-          </div>
-          <div class="certification">
-            <div class="certification-icon">🏆</div>
-            <div>
-              <strong>Microsoft Certified: Azure Security Engineer Associate (AZ-500)</strong>
-            </div>
-          </div>
-        </div>
-        
-        <div class="section">
-          <h3>Skills</h3>
-          <div class="skills-container">
-            <div class="skill-category">
-              <h4>Cybersecurity</h4>
-              <div class="skills-list">
-                <span class="skill-tag">Penetration Testing</span>
-                <span class="skill-tag">Kali Linux</span>
-                <span class="skill-tag">Metasploit</span>
-                <span class="skill-tag">Vulnerability Scanning</span>
-                <span class="skill-tag">Nessus</span>
-                <span class="skill-tag">Burp Suite</span>
-                <span class="skill-tag">SIEM (Splunk)</span>
-                <span class="skill-tag">IDS/IPS</span>
-                <span class="skill-tag">Incident Response</span>
-              </div>
-            </div>
+        // Add smooth scrolling and animation effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
             
-            <div class="skill-category">
-              <h4>Networking</h4>
-              <div class="skills-list">
-                <span class="skill-tag">Cisco Routers/Switches</span>
-                <span class="skill-tag">Wireshark</span>
-                <span class="skill-tag">VoIP</span>
-                <span class="skill-tag">Firewall Configuration</span>
-              </div>
-            </div>
-            
-            <div class="skill-category">
-              <h4>Cloud & Infrastructure</h4>
-              <div class="skills-list">
-                <span class="skill-tag">Microsoft Azure Security</span>
-                <span class="skill-tag">Virtualization (VMware)</span>
-                <span class="skill-tag">Windows/Linux Server Hardening</span>
-                <span class="skill-tag">Google Cloud Platform (GCP)</span>
-              </div>
-            </div>
-            
-            <div class="skill-category">
-              <h4>Programming</h4>
-              <div class="skills-list">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Bash</span>
-                <span class="skill-tag">PowerShell</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
 
-      
-<div id="projects" class="tab-content">
-  <div class="section">
-    <h3>Projects</h3>
-
-    <div class="project">
-      <h4>Cyber Defense Project (Blue Team Operations)</h4>
-<ul>
-        <li>Deployed Splunk SIEM and built incident response playbooks</li>
-        <li>Hardened Windows/Linux servers</li>
-      <li>Performed forensic analysis of compromised machines using volatility and Sysinternals Suite.</li><li>Created and tested SIEM use cases mapped to the MITRE ATT&CK framework.</li><li>Led the development of incident escalation runbooks for malware outbreaks, account compromise, and insider threats.</li><li>Coordinated with red team on purple team exercises to validate defenses and fine-tune alert rules.</li><li>Completed practical blue team scenarios on TryHackMe (Blue Primer, SOC Level 1) and Hack The Box Academy.</li><li>Used simulated attacks to improve detection logic, analyze PCAP files, and extract indicators of compromise.</li></ul>
-    </div>
-
-    <div class="project">
-      <h4>GCP SQL Server Deployment on CentOS</h4>
-<ul><li>Deployed SQL Server on CentOS VMs in GCP Compute Engine</li><li>Configured backups, hardening, and GCP Operations Suite monitoring</li></ul><li>Installed Apache, PHP, MySQL client, and PHP MySQL adapter using dnf and epel-release:</li><ul></ul><li>Connected to Google Cloud MySQL instance and created a database with audit logging:</li><ul></ul><li>Configured backups, hardening, and GCP monitoring integration with Operations Suite.</li></ul>
-    </div>
-
-    <div class="project">
-      <h4>GCP Static Website Hosting with Storage Bucket</h4>
-<ul><li>Configured a Google Cloud Storage bucket with a unique domain name (USERNAME.ddns.net) using NoIP for DNS and TXT validation.</li><li>Validated domain ownership via Google Search Console and added a CNAME record to point to the public GCP storage endpoint.</li><li>Uploaded HTML static files and configured public access through bucket permissions and gsutil web settings.</li><li>Used dynamic data generation from SQL to PHP to create and organize static pages for deployment.</li></ul>
-    </div>
-
-    <div class="project">
-      <h4>SIEM & Endpoint Detection Project (SentinelOne, IDS/IPS)</h4>
-<ul><li>Integrated SentinelOne EDR with Splunk SIEM to correlate logs from Windows/Linux endpoints and network traffic sources.</li><li>Deployed and configured IDS/IPS, including Suricata (NIDS) and Windows Defender (HIPS), to monitor malicious behavior across the network.</li><li>Developed dashboards and alerts for brute-force attacks, lateral movement, privilege escalation, and endpoint malware detections.</li>
-      <li>Integrated Automox for patch management and endpoint hardening automation.</li><li>Used Zscaler for secure web gateway and DNS-layer protection across devices.</li><li>Collaborated with Arctic Wolf SOC for alert triage and escalation procedures.</li></ul>
-    </div>
-
-    <div class="project">
-      <h4>Active Directory Lab Environment</h4>
-      <ul>
-        <li>Set up an internal AD environment with Windows Server 2019 using VirtualBox.</li>
-        <li>Configured OU structure, user/group policies, and implemented password policy via GPO.</li>
-        <li>Simulated attacks using tools like BloodHound and mitigated vulnerabilities.</li>
-      </ul>
-    </div>
-
-    
-
-    <div class="project">
-      <h4>Firewall Rule Implementation with Cisco Meraki and Unifi</h4>
-      <ul>
-        <li>Configured Cisco Meraki and Unifi firewalls with VLAN segmentation and secure remote access rules.</li>
-        <li>Created inbound and outbound firewall rules for specific services (HTTP/S, SSH, DNS).</li>
-        <li>Monitored and logged traffic to ensure rule enforcement and network isolation.</li>
-      </ul>
-    </div>
-
-    
-
-  
-<div class="project">
-  <h4>Windows Server Deployment and Group Policy Management</h4>
-  <ul>
-    <li>Deployed Windows Server 2019 in a lab environment and configured roles including AD DS, DNS, and DHCP.</li>
-    <li>Created and managed user accounts, security groups, and OU structures via Active Directory.</li>
-    <li>Implemented Group Policies to enforce password complexity, restrict software, and configure desktop environments.</li>
-  </ul>
-</div>
-
-
-
-<div class="project">
-  <h4>Office 365 Administration and Exchange Online</h4>
-  <ul>
-    <li>Managed mail flow rules, retention policies, and shared mailboxes within Microsoft Exchange Online.</li>
-    <li>Used PowerShell to automate license assignments, user provisioning, and reporting across the tenant.</li>
-    <li>Configured MFA enforcement, mobile device policies, and alert policies via Microsoft 365 Defender.</li>
-  </ul>
-</div>
-
-
-<div class="project">
-  <h4>Email Security Implementation with Barracuda</h4>
-  <ul>
-    <li>Configured Barracuda Email Security Gateway to filter spam, phishing attempts, and malware-laden attachments.</li>
-    <li>Integrated Barracuda with Microsoft 365 for enhanced mail flow control and outbound filtering.</li>
-    <li>Developed quarantine policies, custom block/allow lists, and incident alerts for suspicious email behavior.</li>
-  </ul>
-</div>
-
-</div>
-</div>
-
-
-      <div id="education" class="tab-content">
-        <div class="section">
-          <h3>Education</h3>
-          
-          <div class="education-item">
-            <div class="education-details">
-              <div class="education-degree">Bachelor's Degree in Information Technology - Cyber Track</div>
-              <div class="education-school">Florida International University (FIU)</div>
-              <div class="education-location">Miami, FL</div>
-            </div>
-            <div class="education-date">Aug 2024 - Dec 2025</div>
-          </div>
-          
-          <div class="education-item">
-            <div class="education-details">
-              <div class="education-degree">Associate of Science in Information Technology</div>
-              <div class="education-school">Broward College / FIU</div>
-              <div class="education-location">Davie, FL</div>
-            </div>
-            <div class="education-date">Aug 2023 - May 2024</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="contact" class="tab-content">
-        <div class="section">
-          <h3>Contact Me</h3>
-          <p>Feel free to reach out to me through any of the following channels:</p>
-          <br>
-          <div class="contact-info" style="justify-content: flex-start;">
-            <div class="contact-item">
-              <i>📧</i> cecil13mais@gmail.com
-            </div>
-            <div class="contact-item">
-              <i>📱</i> (954)-478-0867
-            </div>
-            <div class="contact-item">
-              <i>📍</i> Miami, FL
-            </div>
-          </div>
-          <br>
-          <div class="contact-info" style="justify-content: flex-start;">
-            <div class="contact-item">
-              <i>🔗</i> www.linkedin.com/in/cecilmais
-            </div>
-            <div class="contact-item">
-              <i>💻</i> cecil13mais.github.io
-            </div>
-          </div>
-          <br>
-          <div class="project">
-            <h4>Looking forward to connecting!</h4>
-            <p>I'm always interested in discussing cybersecurity trends, new technologies, and potential opportunities.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <h3>Cecil Mais</h3>
-        <p>IT Security Specialist based in Miami, FL</p>
-        <div class="footer-links">
-          <a href="#" class="footer-link" onclick="openTab(event, 'experience')">
-            <i>💼</i> Experience
-          </a>
-          <a href="#" class="footer-link" onclick="openTab(event, 'skills')">
-            <i>🛠️</i> Skills
-          </a>
-          <a href="#" class="footer-link" onclick="openTab(event, 'projects')">
-            <i>🔍</i> Projects
-          </a>
-          <a href="#" class="footer-link" onclick="openTab(event, 'education')">
-            <i>🎓</i> Education
-          </a>
-          <a href="#" class="footer-link" onclick="openTab(event, 'contact')">
-            <i>📱</i> Contact
-          </a>
-        </div>
-        <p>&copy; 2025 Cecil Mais. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <a href="#" class="to-top" id="toTop">↑</a>
-
-  <div class="modal" id="projectModal">
-    <div class="modal-content">
-      <span class="close-btn" id="closeModal">&times;</span>
-      <h3 id="modalTitle"></h3>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-
-  <script>
-    // Tab functionality
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const tabId = btn.getAttribute('data-tab');
-        
-        // Remove active class from all buttons and contents
-        tabBtns.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // Add active class to clicked button and corresponding content
-        btn.classList.add('active');
-        document.getElementById(tabId).classList.add('active');
-      });
-    });
-    
-    // Function to handle tab opening from footer links
-    function openTab(event, tabId) {
-      event.preventDefault();
-      
-      // Remove active class from all buttons and contents
-      tabBtns.forEach(btn => btn.classList.remove('active'));
-      tabContents.forEach(content => content.classList.remove('active'));
-      
-      // Add active class to corresponding button and content
-      document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-      
-      // Scroll to tabs section
-      window.scrollTo({
-        top: document.querySelector('.tabs').offsetTop - 20,
-        behavior: 'smooth'
-      });
-    }
-    
-    // Back to top button
-    const toTopBtn = document.getElementById('toTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        toTopBtn.classList.add('active');
-      } else {
-        toTopBtn.classList.remove('active');
-      }
-    });
-    
-    toTopBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-    
-    // Project modal functionality
-    const modal = document.getElementById('projectModal');
-    const closeModal = document.getElementById('closeModal');
-    const projects = document.querySelectorAll('.project');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalContent = document.getElementById('modalContent');
-    
-    projects.forEach(project => {
-      project.addEventListener('click', () => {
-        modalTitle.textContent = project.querySelector('h4').textContent;
-        modalContent.innerHTML = project.innerHTML;
-        modalContent.querySelector('h4').remove(); // Remove duplicate title
-        modal.style.display = 'flex';
-      });
-    });
-    
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-    
-    window.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
-    
-    // Skill tag animation
-    const skillTags = document.querySelectorAll('.skill-tag');
-    
-    skillTags.forEach(tag => {
-      tag.addEventListener('mouseover', () => {
-        tag.style.transform = 'translateY(-3px)';
-      });
-      
-      tag.addEventListener('mouseout', () => {
-        tag.style.transform = 'translateY(0)';
-      });
-    });
-  </script>
+            cards.forEach((card) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>
-
-
